@@ -1,0 +1,12 @@
+<ng-container>
+  <div class="alert" [ngClass]="position">
+    <div
+      class="alert-message text-3"
+      *ngFor="let message of messages"
+      [ngClass]="message.type"
+      [@openClose]
+    >
+      <p>{{ message.message }}</p>
+    </div>
+  </div>
+</ng-container>

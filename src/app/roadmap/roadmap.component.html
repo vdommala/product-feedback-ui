@@ -1,0 +1,143 @@
+<header class="roadmap-header">
+  <div>
+    <app-go-back [fromPage]="'roadmap'" (goBackEvent)="goBack($event)">
+    </app-go-back>
+    <h1>Roadmap</h1>
+  </div>
+  <a class="button-add btn-text" routerLink="/new" routerLinkActive="active">
+    <svg width="9" height="9" xmlns="http://www.w3.org/2000/svg">
+      <text
+        transform="translate(-24 -20)"
+        fill="#F2F4FE"
+        fill-rule="evenodd"
+        font-family="Jost-Bold, Jost"
+        font-size="14"
+        font-weight="bold"
+      >
+        <tspan x="24" y="27.5">+</tspan>
+      </text>
+    </svg>
+    Add Feedback
+  </a>
+</header>
+<main *appMedia="'(max-width:767px)'">
+  <ng-container *ngIf="requestByStatus$ | async as requests">
+    <nav class="tabs" role="tabpanel">
+      <button
+        class="tabs-btn btn-text"
+        role="tab"
+        (click)="setStatus('PLND')"
+        [disabled]="requests.PLND.length === 0"
+        aria-disabled="requests.PLND.length === 0"
+      >
+        Planned ({{ requests.PLND.length }})
+      </button>
+      <button
+        class="tabs-btn btn-text"
+        [ngClass]="{ active: status === 'PRGS' }"
+        (click)="setStatus('PRGS')"
+        [disabled]="requests.PRGS.length === 0"
+        aria-disabled="requests.PRGS.length === 0"
+        role="tab"
+      >
+        In-Progress ({{ requests.PRGS.length }})
+      </button>
+      <button
+        class="tabs-btn btn-text"
+        (click)="setStatus('LIVE')"
+        [disabled]="requests.LIVE.length === 0"
+        aria-disabled="requests.LIVE.length === 0"
+        role="tab"
+      >
+        Live ({{ requests.LIVE.length }})
+      </button>
+    </nav>
+
+    <div class="container" [ngSwitch]="status">
+      <ng-container *ngSwitchCase="'PLND'">
+        <div class="status-header">
+          <h1>Planned ({{ requests.PLND.length }})</h1>
+          <p>Ideas prioritized for research</p>
+        </div>
+        <ng-container *ngFor="let planned of requests.PLND">
+          <app-feedback
+            [fromPage]="'roadmap'"
+            [request]="planned"
+          ></app-feedback>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'PRGS'">
+        <div class="status-header">
+          <h1>In-Progress ({{ requests.PRGS.length }})</h1>
+          <p>Features currently being developed</p>
+        </div>
+
+        <ng-container *ngFor="let progress of requests.PRGS">
+          <app-feedback
+            [fromPage]="'roadmap'"
+            [request]="progress"
+          ></app-feedback>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'LIVE'">
+        <div class="status-header">
+          <h1>Live ({{ requests.LIVE.length }})</h1>
+          <p>Released features</p>
+        </div>
+        <ng-container *ngFor="let live of requests.LIVE">
+          <app-feedback [fromPage]="'roadmap'" [request]="live"></app-feedback>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+</main>
+
+<main *appMedia="'(min-width:768px)'" class="container status-container">
+  <ng-container *ngIf="requestByStatus$ | async as requests">
+    <div class="planned">
+      <div *appMedia="'(max-width:1100px)'" class="status-header">
+        <h4>Planned ({{ requests.PLND.length }})</h4>
+        <p>Ideas prioritized for research</p>
+      </div>
+      <div *appMedia="'(min-width:1101px)'" class="status-header">
+        <h3>Planned ({{ requests.PLND.length }})</h3>
+        <p>Ideas prioritized for research</p>
+      </div>
+      <ng-container *ngFor="let planned of requests.PLND">
+        <app-feedback [fromPage]="'roadmap'" [request]="planned"></app-feedback>
+      </ng-container>
+    </div>
+    <div class="inprogress">
+      <div *appMedia="'(max-width:1100px)'" class="status-header">
+        <h4>In-Progress ({{ requests.PRGS.length }})</h4>
+        <p>Currently being developed</p>
+      </div>
+
+      <div *appMedia="'(min-width:1101px)'" class="status-header">
+        <h3>In-Progress ({{ requests.PRGS.length }})</h3>
+        <p>Currently being developed</p>
+      </div>
+
+      <ng-container *ngFor="let progress of requests.PRGS">
+        <app-feedback
+          [fromPage]="'roadmap'"
+          [request]="progress"
+        ></app-feedback>
+      </ng-container>
+    </div>
+    <div class="live">
+      <div *appMedia="'(max-width:1100px)'" class="status-header">
+        <h4>Live ({{ requests.LIVE.length }})</h4>
+        <p>Released features</p>
+      </div>
+
+      <div *appMedia="'(min-width:1101px)'" class="status-header">
+        <h3>Live ({{ requests.LIVE.length }})</h3>
+        <p>Released features</p>
+      </div>
+      <ng-container *ngFor="let live of requests.LIVE">
+        <app-feedback [fromPage]="'roadmap'" [request]="live"></app-feedback>
+      </ng-container>
+    </div>
+  </ng-container>
+</main>

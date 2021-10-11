@@ -1,0 +1,20 @@
+<main class="container">
+  <div class="row">
+    <app-go-back (goBackEvent)="goBack($event)"></app-go-back>
+    <button
+      type="button"
+      class="custom-button edit-btn text-3-bold"
+      (click)="editFeedback()"
+    >
+      Edit Feedback
+    </button>
+  </div>
+  <app-feedback fromPage="detail" [request]="request"></app-feedback>
+  <ng-container *ngIf="request?.comments">
+    <app-comment
+      [comments]="request.comments"
+      (postCommentEvent)="onPostComment($event)"
+      (postReplyEvent)="onPostReply($event)"
+    ></app-comment>
+  </ng-container>
+</main>

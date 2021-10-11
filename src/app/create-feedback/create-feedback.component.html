@@ -1,0 +1,14 @@
+<app-alert
+  [position]="AlertPosition.TOP_RIGHT"
+  aria-live="polite"
+  aria-atomic="true"
+></app-alert>
+
+<app-feedback-request-form
+  [formType]="formType"
+  [formTitle]="formTitle"
+  [backUrl]="backUrl"
+  [feedbackRequest]="feedbackRequest"
+  (saveEvent)="saveFeedback($event)"
+  (deleteEvent)="deleteFeedback($event)"
+></app-feedback-request-form>

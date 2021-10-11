@@ -1,0 +1,38 @@
+.container {
+  margin: 2em 1em;
+}
+
+@media all and (min-width: 1000px) {
+  .container {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .container {
+    width: 60%;
+    margin: auto;
+  }
+}
+
+@media all and (min-width: 1400px) {
+  .container {
+    max-width: 800px;
+  }
+}
+
+.row {
+  margin: 2em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-btn {
+  background-color: var(--secondary-color);
+}
+.edit-btn:hover,
+.edit-btn:focus {
+  background-color: var(--secondary-hover-color);
+}

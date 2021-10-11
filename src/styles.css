@@ -1,1 +1,398 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap");
+@import "~normalize.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+:root {
+  --primary-color: hsl(282, 83%, 52%);
+  --primary-color-hover: hsl(282, 90%, 66%);
+  --secondary-color: hsl(230, 76%, 59%);
+  --secondary-hover-color: hsl(230, 89%, 74%);
+  --default-color: hsl(230, 31%, 31%);
+  --white: hsl(0, 0%, 100%);
+  --primary-bg-color: hsl(230, 60%, 98%);
+  --field-bg-color: hsl(231, 100%, 97%);
+  --default-hover-color: #cfd7ff;
+  --header-bg-color: hsl(231, 33%, 34%);
+  --header-bg-color-light: hsla(231, 33%, 34%, 0.4);
+  --header-bg-hover-color: hsla(231, 26%, 52%, 1);
+  --card-default-outline: hsl(14, 83%, 74%);
+  --card-secondary-outline: hsl(204, 94%, 68%);
+  --text-primary-color: hsl(224, 20%, 49%);
+  --danger-color: hsla(0, 67%, 53%, 1);
+  --danger-hover-color: hsla(0, 69%, 72%, 1);
+  --tabs-btn-color: hsla(231, 20%, 63%, 0.25);
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-size: border-box;
+  box-sizing: border-box;
+}
+header,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
+a:hover {
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
+input,
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: var(--primary-bg-color);
+}
+
+p,
+.text-3,
+.label-text {
+  font-size: 0.81rem;
+}
+.btn-text,
+.text-3-bold {
+  font-size: 0.81rem;
+  font-weight: 700;
+}
+
+.semi-bold {
+  font-size: 0.81rem;
+  font-weight: 600;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+h1 {
+  font-size: calc(0.93rem + 1vw);
+  font-weight: 700;
+  letter-spacing: -0.25px;
+}
+
+h2 {
+  font-size: calc(0.75rem + 1vw);
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+h3 {
+  font-size: calc(0.59rem + 1vw);
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.custom-button {
+  background: transparent;
+  border: 0px transparent;
+  padding: 0.7em 1em;
+  border-radius: 10px;
+  color: hsla(230, 86%, 97%, 1);
+}
+
+@media all and (min-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+    letter-spacing: -0.33px;
+  }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.25px;
+  }
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.25px;
+  }
+  h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+  p {
+    font-size: 1rem;
+  }
+
+  .label-text {
+    font-size: 0.875rem;
+  }
+  .btn-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  .text-3 {
+    font-size: 0.94rem;
+  }
+
+  .semi-bold {
+    font-size: 0.93rem;
+    font-weight: 500;
+  }
+}
+
+#sort-select {
+  font-size: 0.81rem;
+  font-weight: 700;
+}
+
+@media all and (min-width: 768px) {
+  #sort-select {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .custom-button {
+    background: transparent;
+    border: 0px transparent;
+    padding: 0.8em 1.5em;
+    width: max-content;
+    border-radius: 10px;
+    color: hsla(230, 86%, 97%, 1);
+  }
+}
+
+#sort-select .ng-select-container {
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  color: var(--white) !important;
+  background-color: transparent !important;
+  border-radius: 0px !important;
+  border: 0px !important;
+}
+
+.ng-select .ng-select-container:hover {
+  box-shadow: none;
+}
+
+#sort-select .ng-value-container {
+  display: inline;
+  color: var(--white) !important;
+  background-color: transparent !important;
+  border-radius: 0px !important;
+  border: 0px !important;
+  padding-left: 1px;
+}
+
+#sort-select .ng-value {
+  overflow: visible;
+  text-overflow: unset;
+}
+
+#sort-select .ng-input {
+  padding: 0;
+  top: 0;
+}
+
+#sort-select.ng-select-focused {
+  border: none;
+  box-shadow: none;
+}
+
+#sort-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  border: none;
+  box-shadow: none;
+}
+
+#sort-select:not(.ng-select-openend) .ng-arrow-wrapper .ng-arrow {
+  width: 8px;
+  top: -2px;
+  height: 8px;
+  border: 2px solid white;
+  background-color: transparent;
+  transform: rotate(135deg);
+  border-left: 0px transparent;
+  border-bottom: 0px transparent;
+}
+
+#sort-select.ng-select-opened .ng-arrow-wrapper .ng-arrow {
+  width: 8px;
+  height: 8px;
+  border: 2px solid white;
+  background-color: transparent;
+  transform: rotate(135deg);
+  border-right: 0px transparent;
+  border-top: 0px transparent;
+}
+
+#sort-select .ng-dropdown-panel.ng-select-bottom {
+  top: 60px;
+  border-radius: 10px;
+  width: 30ch;
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+}
+
+#sort-select .ng-dropdown-panel .ng-dropdown-panel-items {
+  border-radius: 10px;
+  text-align: left;
+}
+
+#sort-select .ng-option {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary-color);
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-top: 1px solid #e6e6e6;
+}
+
+#sort-select .ng-option.ng-option-marked {
+  color: var(--primary-color);
+  background-color: transparent;
+}
+
+#sort-select .ng-option.ng-option-selected {
+  background-image: url("/assets/shared/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: 20ch;
+  background-origin: content-box;
+  color: var(--text-primary-color);
+  text-align: left;
+  background-color: transparent;
+}
+
+.custom-input-select {
+  border: none;
+  border-radius: 5px;
+  margin-top: 1em;
+  background-color: var(--primary-bg-color);
+  color: var(--header-bg-color);
+  font-size: 0.81rem;
+}
+
+@media all and (min-width: 768px) {
+  .custom-input-select {
+    font-size: 0.93rem;
+  }
+}
+
+.custom-input-select .ng-select-container {
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  color: var(--header-bg-color) !important;
+  background-color: transparent !important;
+  border-radius: 0px !important;
+  border: 0px !important;
+}
+
+.custom-input-select .ng-value-container {
+  display: inline;
+  color: var(--header-bg-color) !important;
+  background-color: transparent !important;
+  border-radius: 0px !important;
+  border: 0px !important;
+  padding-left: 1px;
+}
+
+.custom-input-select .ng-value {
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.custom-input-select .ng-input {
+  padding: 0;
+  top: 0;
+}
+
+.custom-input-select.ng-select-focused {
+  border: 1px solid var(--secondary-color);
+}
+
+.custom-input-select.ng-select-focused:not(.ng-select-opened)
+  > .ng-select-container {
+  border: 1px solid var(--secondary-color);
+  box-shadow: none;
+}
+
+.custom-input-select:not(.ng-select-openend) .ng-arrow-wrapper .ng-arrow {
+  width: 8px;
+  top: -2px;
+  height: 8px;
+  border: 2px solid var(--secondary-color);
+  background-color: transparent;
+  transform: rotate(135deg);
+  border-left: 0px transparent;
+  border-bottom: 0px transparent;
+}
+
+.custom-input-select.ng-select-opened .ng-arrow-wrapper .ng-arrow {
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--secondary-color);
+  background-color: transparent;
+  transform: rotate(135deg);
+  border-right: 0px transparent;
+  border-top: 0px transparent;
+}
+
+.custom-input-select .ng-dropdown-panel.ng-select-bottom {
+  top: 60px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+}
+
+.custom-input-select .ng-dropdown-panel .ng-dropdown-panel-items {
+  border-radius: 10px;
+  text-align: left;
+}
+
+#category .ng-option,
+#status .ng-option {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary-color);
+  padding-left: 1em;
+  padding-right: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 1px solid #e6e6e6;
+}
+
+#category .ng-option.ng-option-marked,
+#status .ng-option.ng-option-marked {
+  color: var(--primary-color);
+  background-color: var(--white);
+}
+
+#category .ng-option.ng-option-selected,
+#status .ng-option.ng-option-selected {
+  background-image: url("/assets/shared/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-origin: content-box;
+  color: var(--text-primary-color);
+  text-align: left;
+  background-color: transparent;
+}

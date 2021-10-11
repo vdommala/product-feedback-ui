@@ -1,0 +1,136 @@
+<ng-container *ngIf="comments.length !== 0">
+  <section class="container">
+    <h1 class="title">{{ comments.length }} Comments</h1>
+    <article
+      class="comment-container"
+      *ngFor="let comment of comments; let id = index"
+    >
+      <div class="row">
+        <div class="user-image-row">
+          <img
+            class="user-image"
+            src="data:image/jpeg;base64,{{ comment?.user?.image }}"
+          />
+          <div class="user-image-name">
+            <div class="text-3-bold title">
+              {{ comment?.user?.firstName }} {{ comment?.user?.lastName }}
+            </div>
+            <div class="text-3 text-color">@{{ comment?.user?.userName }}</div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="reply-btn text-3"
+          (click)="onCommentReply(id)"
+        >
+          Reply
+        </button>
+      </div>
+      <div class="comment-reply">
+        <div class="comment-post-reply">
+          <p class="text-3 text-color content">{{ comment?.content }}</p>
+          <form *ngIf="openReply[id].open" class="row wrap reply-box">
+            <textarea
+              class="custom-input reply"
+              type="textarea"
+              [formControl]="reply"
+              rows="3"
+              column="5"
+            ></textarea>
+            <div class="post-reply">
+              <button
+                type="submit"
+                class="custom-button post-btn text-3-bold"
+                (click)="postReply(id)"
+              >
+                Post Reply
+              </button>
+            </div>
+          </form>
+        </div>
+        <ng-container *ngIf="comment?.replies">
+          <article
+            class="reply-container"
+            *ngFor="let reply of comment?.replies; let rid = index"
+          >
+            <div class="row">
+              <div class="user-image-row">
+                <img
+                  class="user-image"
+                  src="data:image/jpeg;base64,{{ reply?.user?.image }}"
+                />
+                <div class="user-image-name">
+                  <div class="text-3-bold title">
+                    {{ reply?.user?.firstName }} {{ reply?.user?.lastName }}
+                  </div>
+                  <div class="text-3 text-color">
+                    @{{ reply?.user?.userName }}
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="reply-btn text-3"
+                (click)="onReply(id, rid)"
+              >
+                Reply
+              </button>
+            </div>
+            <div>
+              <p class="text-3 text-color content">
+                <span> @{{ reply?.replyTo }} </span>
+                {{ reply?.content }}
+              </p>
+            </div>
+            <form
+              *ngIf="openReply[id].repliesOpen[rid]"
+              class="row wrap reply-box"
+            >
+              <textarea
+                class="custom-input reply"
+                type="textarea"
+                [formControl]="replyToReply"
+                rows="3"
+                column="5"
+              ></textarea>
+              <div class="post-reply">
+                <button
+                  type="button"
+                  class="custom-button post-btn text-3-bold"
+                  (click)="postReplyReply(id, rid)"
+                >
+                  Post Reply
+                </button>
+              </div>
+            </form>
+          </article>
+        </ng-container>
+      </div>
+    </article>
+  </section>
+</ng-container>
+<form class="container">
+  <h1 class="title" role="label">Add Comment</h1>
+  <textarea
+    class="custom-input"
+    type="textarea"
+    [formControl]="comment"
+    rows="5"
+    column="30"
+    maxlength="250"
+  ></textarea>
+  <div class="post-comment">
+    <p class="text-3 text-color push-left">
+      {{ rcommentLength }} Characters left
+    </p>
+    <button
+      type="button"
+      class="custom-button post-btn text-3-bold"
+      (click)="postComment()"
+    >
+      Post Comment
+    </button>
+  </div>
+</form>

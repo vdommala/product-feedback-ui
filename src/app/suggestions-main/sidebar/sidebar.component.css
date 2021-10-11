@@ -1,0 +1,237 @@
+.sidebar-container {
+  background-color: var(--primary-bg-color);
+  border-left: 2px white;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  width: 75%;
+  height: calc(100vh - 100px);
+  z-index: 2;
+  padding: 2em;
+}
+
+.hidden {
+  display: none;
+}
+
+/*styles for sidebar>*/
+.sidebar-card {
+  background-color: var(--white);
+  max-width: 60vw;
+  padding: 1em 1em;
+  border-radius: 10px;
+  margin-bottom: 2em;
+}
+
+@media all and (min-width: 768px) {
+  .hidden {
+    display: inline-flex;
+  }
+  .sidebar-container {
+    background-color: var(--primary-bg-color);
+    border-left: 2px white;
+    margin: 2rem 0;
+    width: 60%;
+    height: 172px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 35%;
+    z-index: 0;
+    padding: 0 0;
+  }
+  .sidebar-card {
+    background-color: var(--white);
+    width: 50%;
+    border-radius: 10px;
+    height: 100%;
+    margin: 0;
+  }
+
+  .sidebar-card + .sidebar-card {
+    margin-left: 1rem;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .hidden {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .sidebar-container {
+    background-color: var(--primary-bg-color);
+    border-left: 2px white;
+    position: fixed;
+    margin: 0 0 2rem 10rem;
+    width: 20%;
+    max-width: 255px;
+    height: 172px;
+    top: 280px;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    padding: 0 0;
+  }
+  .sidebar-card {
+    background-color: var(--white);
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    margin: 0;
+  }
+
+  .sidebar-card + .sidebar-card {
+    margin-top: 2rem;
+    margin-left: 0;
+  }
+}
+
+.category-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+.category-btn {
+  text-align: center;
+  margin-top: 1.3em;
+}
+
+.category-btn label {
+  padding: 0.25rem 1rem;
+  background-color: var(--field-bg-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--secondary-color);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+  width: 100%;
+  height: 100%;
+}
+
+.category-btn input {
+  position: relative;
+  left: -1em;
+  opacity: 0;
+  z-index: -1;
+}
+
+.category-btn label:hover {
+  padding: 0.25rem 1rem;
+  background-color: var(--default-hover-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--secondary-color);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.category-btn:focus,
+.category-btn input[type="radio"]:checked + label {
+  padding: 0.25rem 1rem;
+
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.active {
+  padding: 0.25rem 1rem;
+  margin: 0.3rem;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: auto;
+}
+.roadmap-title {
+  margin-bottom: 1em;
+  color: var(--header-bg-color);
+}
+
+.status-list {
+  margin-left: 0.3rem;
+  justify-self: left;
+  color: var(--text-primary-color);
+}
+
+.value-list {
+  text-align: right;
+  font-weight: 700;
+  color: var(--text-primary-color);
+}
+
+.status-list > li {
+  justify-self: center;
+  margin-left: 0.3rem;
+  margin-bottom: 0.4em;
+}
+
+.status-list > li::before {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  content: " ";
+  margin-right: 1em;
+}
+
+.status-list > li:first-child::before {
+  background-color: var(--card-default-outline);
+}
+.status-list > li:nth-child(2)::before {
+  background-color: var(--primary-color);
+}
+.status-list > li:last-child::before {
+  background-color: var(--card-secondary-outline);
+}
+
+.value-list > li {
+  margin-right: 0.3rem;
+  margin-bottom: 0.5em;
+}
+
+.link {
+  color: var(--secondary-color);
+  justify-self: center;
+  align-self: end;
+  text-align: left;
+  margin-bottom: 1.5em;
+  text-decoration: underline;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--secondary-hover-color);
+  justify-self: center;
+  align-self: end;
+  text-align: left;
+  margin-bottom: 1.5em;
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  color: var(--secondary-hover-color);
+  justify-self: center;
+  align-self: end;
+  text-align: left;
+  margin-bottom: 1.5em;
+  text-decoration: underline;
+  outline: 1px solid var(--primary-color);
+}

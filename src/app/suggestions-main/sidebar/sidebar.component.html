@@ -1,0 +1,44 @@
+<aside [ngClass]="{ hidden: !this.open }" class="sidebar-container">
+  <div class="sidebar-card">
+    <div class="category-row">
+      <div class="category-btn semi-bold">
+        <input
+          id="all"
+          type="radio"
+          value="all"
+          name="filterByCategory"
+          (change)="filter('all')"
+          [ngModel]="filterCategory"
+        />
+        <label for="all">All</label>
+      </div>
+      <div *ngFor="let option of category" class="category-btn semi-bold">
+        <input
+          id="{{ option.name }}"
+          type="radio"
+          value="{{ option.name }}"
+          name="filterByCategory"
+          (change)="filter(option.code)"
+          [ngModel]="filterCategory"
+        />
+        <label for="{{ option.name }}">{{ option.name }}</label>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <div class="status-grid">
+      <h3 class="roadmap-title">Roadmap</h3>
+      <a routerLink="/roadmap" tabindex="0" class="link semi-bold">View</a>
+      <ul class="status-list">
+        <li>Planned</li>
+        <li>In-Progress</li>
+        <li>Live</li>
+      </ul>
+      <ul class="value-list">
+        <li>{{ statusCount.planned }}</li>
+        <li>{{ statusCount["in-progress"] }}</li>
+        <li>{{ statusCount.live }}</li>
+      </ul>
+    </div>
+  </div>
+</aside>

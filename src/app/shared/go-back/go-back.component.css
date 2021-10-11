@@ -1,0 +1,17 @@
+.back-link {
+  color: var(--text-primary-color);
+  cursor: pointer;
+}
+.white {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.back-link svg {
+  margin-right: 0.5em;
+}
+
+.back-link :hover {
+  text-decoration: underline;
+  text-decoration-color: var(--default-hover-color);
+}

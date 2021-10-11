@@ -1,0 +1,69 @@
+.header-bg {
+  position: relative;
+  background-image: url("/assets/suggestions/mobile/background-header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 72px;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 2em;
+}
+
+.title-color {
+  color: var(--white);
+}
+
+.title-color > p {
+  opacity: 0.75;
+}
+
+@media all and (min-width: 768px) {
+  .header-bg {
+    background-image: url("/assets/suggestions/tablet/background-header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    width: 30%;
+    margin: 2em 2em;
+    height: 172px;
+  }
+  .header-row {
+    display: flex;
+    align-items: last baseline;
+    justify-content: space-between;
+    padding: 1.5em 1.5em;
+  }
+
+  .hide-menu-icon {
+    display: none;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .header-bg {
+    background-image: url("/assets/suggestions/tablet/background-header.png");
+    position: fixed;
+    margin: 0 0 2em 10em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    width: 20%;
+    height: 172px;
+    max-width: 255px;
+  }
+  .header-row {
+    display: flex;
+    align-items: last baseline;
+    justify-content: space-between;
+    padding: 1.5em 1.5em;
+  }
+
+  .hide-menu-icon {
+    display: none;
+  }
+}

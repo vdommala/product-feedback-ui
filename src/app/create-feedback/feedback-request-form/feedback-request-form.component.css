@@ -1,0 +1,172 @@
+.container {
+  width: 100%;
+}
+
+@media all and (min-width: 768px) {
+  .container {
+    width: 650px;
+    margin: auto;
+  }
+}
+
+.goBack {
+  margin: 2em 2em 0em;
+}
+
+.icon {
+  position: relative;
+  top: 2.5em;
+  left: 4.5em;
+}
+
+.form-bg {
+  margin: auto 2em;
+  padding: 2em 2em;
+  background-color: var(--white);
+  border-radius: 10px;
+  color: var(--header-bg-color);
+}
+.form-title {
+  margin: 1.5em 0em 3em;
+}
+
+.custom-field-group {
+  margin-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.custom-field-group > span {
+  margin-top: 0.3em;
+  color: var(--text-primary-color);
+}
+
+.custom-field-group .error {
+  font-size: 0.81rem;
+  color: hsla(0, 67%, 53%, 1);
+}
+
+.label-text {
+  font-weight: 700;
+  color: var(--header-bg-color);
+}
+.custom-input {
+  border: 1px solid var(--primary-bg-color);
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
+  margin-top: 1em;
+  background-color: var(--primary-bg-color);
+  color: var(--header-bg-color);
+  font-size: 0.81rem;
+}
+
+.custom-input:focus,
+.custom-input:hover {
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
+  margin-top: 1em;
+  background-color: var(--primary-bg-color);
+  color: var(--header-bg-color);
+  font-size: 0.81rem;
+}
+.error {
+  font-size: 0.81rem;
+  color: var(--danger-color);
+}
+
+@media all and (min-width: 768px) {
+  .custom-input {
+    font-size: 0.93rem;
+  }
+
+  .custom-input:focus,
+  .custom-input:hover {
+    font-size: 0.93rem;
+  }
+  .custom-field-group .error {
+    font-size: 0.875rem;
+  }
+
+  .error {
+    font-size: 0.875rem;
+  }
+}
+.custom-input-select.ng-invalid.ng-touched {
+  border: 1px solid hsla(0, 67%, 53%, 1);
+}
+.form-bg.submitted .custom-input-select.ng-invalid {
+  border: 1px solid hsla(0, 67%, 53%, 1);
+}
+
+.form-bg.submitted .custom-input.ng-invalid {
+  border: 1px solid hsla(0, 67%, 53%, 1);
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
+  margin-top: 1em;
+  background-color: var(--primary-bg-color);
+  color: var(--header-bg-color);
+  font-size: 0.81rem;
+}
+
+.custom-input.ng-invalid.ng-touched {
+  border: 1px solid hsla(0, 67%, 53%, 1);
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
+  margin-top: 1em;
+  background-color: var(--primary-bg-color);
+  color: var(--header-bg-color);
+  font-size: 0.81rem;
+}
+.btn-group {
+  margin-top: 2rem;
+}
+
+.btn-add {
+  border: 1px var(--primary-color);
+  background-color: var(--primary-color);
+  width: 100%;
+  margin-bottom: 1em;
+}
+.btn-add:hover,
+.btn-add:focus {
+  background-color: var(--primary-color-hover);
+}
+.btn-cancel {
+  background-color: var(--header-bg-color);
+  width: 100%;
+  margin-bottom: 1em;
+}
+.btn-cancel:hover {
+  background-color: var(--header-bg-hover-color);
+}
+.btn-delete {
+  background-color: var(--danger-color);
+  width: 100%;
+  margin-bottom: 1em;
+}
+.btn-delete:hover {
+  background-color: var(--danger-hover-color);
+}
+
+@media all and (min-width: 650px) {
+  .btn-group {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 2em;
+  }
+
+  .push-left {
+    margin-left: auto;
+  }
+  .btn-add {
+    width: max-content;
+  }
+  .btn-cancel {
+    width: max-content;
+    margin-right: 1em;
+  }
+  .btn-delete {
+    width: max-content;
+  }
+}

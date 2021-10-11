@@ -1,0 +1,140 @@
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media all and (min-width: 768px) {
+  .container {
+    width: 92%;
+    margin: 2rem 2rem;
+    padding: 0;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .container {
+    width: 60%;
+    margin: 5rem 5rem 5rem 28rem;
+    padding: 0;
+  }
+}
+
+.is-blurred {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  overflow: hidden;
+}
+
+.suggestion-container {
+  background-color: var(--header-bg-color);
+  color: var(--white);
+  width: 100%;
+  height: 60px;
+  padding: 2em 2em;
+  margin-bottom: 2em;
+}
+
+.suggestion-row {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggestion-row-icon {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.icon-bulb {
+  display: none;
+}
+
+.button-add {
+  padding: 0.7rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--field-bg-color);
+  border: none;
+  border-radius: 10px;
+}
+
+.button-add:hover,
+.button-add:focus,
+.button-add::-moz-focus-outer {
+  text-decoration: none;
+  text-decoration-color: transparent;
+  padding: 0.7rem 1rem;
+  background-color: var(--primary-color-hover);
+  color: var(--field-bg-color);
+  border: none;
+  border-radius: 10px;
+}
+.button-add:focus-visible {
+  outline: 2px solid var(--primary-color);
+}
+.select-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.feedback-no-container {
+  background: var(--white);
+  width: 85%;
+  padding-top: 5em;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-bottom: 3em;
+  margin: 2em auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feedback-no-container p {
+  text-align: center;
+  color: var(--text-primary-color);
+  margin-top: 1em;
+  margin-bottom: 2em;
+  width: 30ch;
+}
+
+.feedback-no-container h1 {
+  text-align: center;
+  color: var(--header-bg-color);
+  margin-top: 3em;
+}
+
+@media all and (min-width: 768px) {
+  .select-group {
+    margin-left: 1rem;
+  }
+  .suggestion-container {
+    border-radius: 10px;
+    padding: 1.5em 1.5em;
+  }
+
+  .icon-bulb {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .icon-bulb h3 {
+    margin-left: 1.5rem;
+  }
+
+  .feedback-no-container {
+    width: 100%;
+  }
+  .feedback-no-container p {
+    text-align: center;
+    color: var(--text-primary-color);
+    margin-top: 1em;
+    margin-bottom: 2em;
+    width: 45ch;
+  }
+}
