@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   title: 'Prod',
-  apiHost: 'https://feedback-services.herokuapp.com/api',
+  apiHost: 'https://152.70.68.62:8443/api',
 };
