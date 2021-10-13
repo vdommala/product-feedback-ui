@@ -46,7 +46,7 @@
 
 @media all and (min-width: 1200px) {
   .header-bg {
-    background-image: url("../../../assets/suggestions/tablet/background-header.png");
+    background-image: url("../../../assets/suggestions/desktop/background-header.png");
     position: fixed;
     margin: 0 0 2em 10em;
     background-repeat: no-repeat;
