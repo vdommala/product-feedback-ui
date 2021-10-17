@@ -1,9 +1,9 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, UrlSegment, Params } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { switchMap, takeUntil, takeWhile } from 'rxjs/operators';
 import { AlertPosition } from '../alert/alert-position.enum';
 import { AlertType } from '../alert/alert-type.enum';
 import { AlertService } from '../alert/alert.service';
@@ -15,13 +15,14 @@ import { FeedbackRequestFormComponent } from './feedback-request-form/feedback-r
   templateUrl: './create-feedback.component.html',
   styleUrls: ['./create-feedback.component.css'],
 })
-export class CreateFeedbackComponent implements OnInit {
+export class CreateFeedbackComponent implements OnInit, OnDestroy {
   formType!: string;
   formTitle!: string;
   backUrl!: string;
   feedbackRequest: FeedbackRequest;
   AlertPosition = AlertPosition;
   AlertType = AlertType;
+  private destroyService$: Subject<void>;
   @ViewChild(FeedbackRequestFormComponent, { static: true })
   private child!: FeedbackRequestFormComponent;
 
@@ -32,6 +33,7 @@ export class CreateFeedbackComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
+    this.destroyService$ = new Subject<void>();
     this.feedbackRequest = {
       id: '',
       title: '',
@@ -42,7 +44,7 @@ export class CreateFeedbackComponent implements OnInit {
       comments: [],
     };
 
-    this.route.url.subscribe((value: UrlSegment[]) => {
+    this.route.url.pipe().subscribe((value: UrlSegment[]) => {
       this.formType = value[0].path;
       if (this.formType === 'new') {
         this.createSetUp();
@@ -50,6 +52,10 @@ export class CreateFeedbackComponent implements OnInit {
         this.editSetUp();
       }
     });
+  }
+  ngOnDestroy(): void {
+    this.destroyService$.next();
+    this.destroyService$.complete();
   }
 
   ngOnInit(): void {}
@@ -60,13 +66,16 @@ export class CreateFeedbackComponent implements OnInit {
   }
 
   editSetUp() {
+    let isDone: boolean = false;
     this.route.paramMap
       .pipe(
+        takeWhile(() => !isDone),
         switchMap((params: Params) =>
           this.requestService.getFeedback(params.get('id'))
         )
       )
       .subscribe((response) => {
+        isDone = true;
         this.feedbackRequest = { ...response };
         this.formTitle = `Editing  '${response.title} '`;
         this.backUrl = '/detail/' + this.feedbackRequest.id;
@@ -86,31 +95,41 @@ export class CreateFeedbackComponent implements OnInit {
   }
 
   saveNewFeedback(feedback: FeedbackRequest) {
-    this.requestService.saveFeedback(feedback).subscribe((response) => {
-      if (response.id !== null) {
-        this.feedbackRequest = response;
-        this.alertService.alert('Feedback is created', AlertType.SUCCESS);
-      }
-    });
+    let isDone = false;
+    this.requestService
+      .saveFeedback(feedback)
+      .pipe(takeUntil(this.destroyService$))
+      .subscribe((response) => {
+        if (response.id !== null) {
+          this.feedbackRequest = response;
+          this.alertService.alert(
+            'New feedback  is created successfully',
+            AlertType.SUCCESS
+          );
+        }
+      });
   }
 
   updateFeedback(feedback: FeedbackRequest) {
-    this.requestService.updateFeedback(feedback).subscribe((response) => {
-      if (response.id !== null) {
-        this.feedbackRequest = response;
-        this.alertService.alert(
-          `${this.feedbackRequest.title} feedback is updated successfully`,
-          AlertType.SUCCESS
-        );
-      }
-    });
+    this.requestService
+      .updateFeedback(feedback)
+      .pipe(takeUntil(this.destroyService$))
+      .subscribe((response) => {
+        if (response.id !== null) {
+          this.feedbackRequest = response;
+          this.alertService.alert(
+            `${this.feedbackRequest.title} feedback is updated successfully`,
+            AlertType.SUCCESS
+          );
+        }
+      });
   }
 
   deleteFeedback(feedback: FeedbackRequest) {
     this.requestService
       .deleteFeedback(feedback.id)
+      .pipe(takeUntil(this.destroyService$))
       .subscribe((response: any) => {
-        console.log(response);
         if (response.message === 'Deleted Successfully') {
           this.alertService.alert(
             `${this.feedbackRequest.title} is deleted`,

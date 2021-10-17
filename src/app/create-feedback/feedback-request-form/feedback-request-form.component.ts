@@ -38,7 +38,6 @@ export class FeedbackRequestFormComponent implements OnInit, OnDestroy {
   @Input()
   set feedbackRequest(request: FeedbackRequest) {
     this._feedbackRequest = request;
-    console.log(this._feedbackRequest);
     if (request.title !== '') {
       this.submitted = false;
       this.feedbackForm = this.fb.group({
@@ -145,7 +144,6 @@ export class FeedbackRequestFormComponent implements OnInit, OnDestroy {
       status: new FormControl(status, Validators.required),
       description: new FormControl(null, [Validators.required]),
     });
-    console.log(this.feedbackForm.value);
   }
 
   onSubmit(): void {
@@ -180,6 +178,7 @@ export class FeedbackRequestFormComponent implements OnInit, OnDestroy {
   onDelete(): void {
     this.dialogService
       .confirm('Are you sure you want to delete it permanently?')
+      .pipe(takeUntil(this.service$))
       .subscribe((response) => {
         if (response) this.deleteEvent.emit(this.feedbackRequest);
       });

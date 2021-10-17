@@ -9,6 +9,7 @@ import { Reply } from '../data-model/reply-model';
 import { User } from '../data-model/user-model';
 import { CommentsService } from '../feedback-api/comments.service';
 import { FeedbackSubjectService } from '../feedback-api/feedback-subject.service';
+import { LoaderService } from '../feedback-api/loader.service';
 import { RepliesService } from '../feedback-api/replies.service';
 import { RequestService } from '../feedback-api/request.service';
 
@@ -27,8 +28,11 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
     private requestService: RequestService,
     private userService: FeedbackSubjectService,
     private commentsService: CommentsService,
-    private replyservice: RepliesService
-  ) {}
+    private replyservice: RepliesService,
+    private loader: LoaderService
+  ) {
+    this.loader.showLoader();
+  }
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
@@ -49,12 +53,12 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
           isDone = true;
           this.request = response;
           this.id = this.request.id;
+          this.loader.hideLoader();
         }
       });
   }
 
   goBack(val: string) {
-    console.log(val);
     this.router.navigateByUrl('/feedback');
   }
 
@@ -84,8 +88,6 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
           this.id = this.request.id;
         }
       });
-
-    console.log(feedbackComment);
   }
 
   onPostReply(reply: Reply) {

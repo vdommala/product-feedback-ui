@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FeedbackRequest } from '../data-model/feedback-model';
+import { LoaderService } from '../feedback-api/loader.service';
 import { RequestService } from '../feedback-api/request.service';
 
 @Component({
@@ -18,13 +19,18 @@ export class RoadmapComponent implements OnInit {
   progress$: Observable<FeedbackRequest[]>;
   status: string;
 
-  constructor(private requestService: RequestService, private router: Router) {
+  constructor(
+    private requestService: RequestService,
+    private router: Router,
+    private loader: LoaderService
+  ) {
     this.count$ = new Observable<any>();
     this.requestByStatus$ = new Observable<any>();
     this.planned$ = new Observable<FeedbackRequest[]>();
     this.live$ = new Observable<FeedbackRequest[]>();
     this.progress$ = new Observable<FeedbackRequest[]>();
     this.status = 'PRGS';
+    this.loader.showLoader();
   }
 
   ngOnInit(): void {
@@ -33,6 +39,7 @@ export class RoadmapComponent implements OnInit {
       map((requests: FeedbackRequest[]) =>
         requests.reduce(
           (statusRequests: any, request) => {
+            this.loader.hideLoader();
             let key = request.status.code;
             statusRequests[key].push(request);
             return statusRequests;
@@ -48,7 +55,6 @@ export class RoadmapComponent implements OnInit {
   }
 
   goBack(val: string) {
-    console.log(val);
     this.router.navigateByUrl('/feedback');
   }
 }

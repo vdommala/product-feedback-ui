@@ -8,9 +8,16 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { GoBackComponent } from './go-back/go-back.component';
 import { MediaDirective } from './media.directive';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
-  declarations: [SortPipe, FeedbackComponent, GoBackComponent, MediaDirective],
+  declarations: [
+    SortPipe,
+    FeedbackComponent,
+    GoBackComponent,
+    MediaDirective,
+    LoaderComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -30,6 +37,7 @@ import { MediaDirective } from './media.directive';
     GoBackComponent,
     MediaDirective,
     SortPipe,
+    LoaderComponent,
   ],
 })
 export class SharedModule {}

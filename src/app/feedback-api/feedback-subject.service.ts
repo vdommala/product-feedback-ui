@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject, ReplaySubject, AsyncSubject } from 'rxjs';
+import {
+  Subject,
+  BehaviorSubject,
+  ReplaySubject,
+  AsyncSubject,
+  Observable,
+} from 'rxjs';
 import { FeedbackRequest } from '../data-model/feedback-model';
 import { User } from '../data-model/user-model';
 
@@ -31,7 +37,7 @@ export class FeedbackSubjectService {
     this.currentUser.next(user);
   }
 
-  getCurrentUser() {
+  getCurrentUser(): Observable<User> {
     return this.currentUser.asObservable();
   }
 }

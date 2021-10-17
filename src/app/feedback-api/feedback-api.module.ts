@@ -15,6 +15,7 @@ import { FeedbackSubjectService } from './feedback-subject.service';
 import { DialogService } from './dialog.service';
 import { CommentsService } from './comments.service';
 import { RepliesService } from './replies.service';
+import { LoaderService } from './loader.service';
 
 @NgModule({
   declarations: [],
@@ -41,6 +42,7 @@ export class FeedbackApiModule {
         CanDeactivateGuard,
         FeedbackSubjectService,
         DialogService,
+        LoaderService,
       ],
     };
   }

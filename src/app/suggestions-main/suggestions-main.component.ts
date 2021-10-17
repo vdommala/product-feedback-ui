@@ -4,6 +4,7 @@ import { switchMap, takeUntil, takeWhile } from 'rxjs/operators';
 import { FeedbackRequest } from '../data-model/feedback-model';
 import { StatusCount } from '../data-model/status-count';
 import { FeedbackSubjectService } from '../feedback-api/feedback-subject.service';
+import { LoaderService } from '../feedback-api/loader.service';
 import { RequestService } from '../feedback-api/request.service';
 
 @Component({
@@ -23,8 +24,10 @@ export class SuggestionsMainComponent implements OnInit, OnDestroy {
 
   constructor(
     private requestService: RequestService,
-    private feedbackSubject: FeedbackSubjectService
+    private feedbackSubject: FeedbackSubjectService,
+    private loaderService: LoaderService
   ) {
+    this.loaderService.showLoader();
     this.open = false;
     this.filterCategory = '';
     this.statusCount = { planned: 0, live: 0, 'in-progress': 0 };
@@ -41,7 +44,6 @@ export class SuggestionsMainComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.subject))
       .subscribe((count: StatusCount) => {
         this.statusCount = count;
-        console.log(count);
       });
   }
 
@@ -57,12 +59,12 @@ export class SuggestionsMainComponent implements OnInit, OnDestroy {
         if (response.length > 0) {
           this.filterCategory = 'all';
         }
+        this.loaderService.hideLoader();
       });
   }
 
   toggleMenu(toggle: boolean) {
     this.open = toggle;
-    console.log(this.open);
   }
 
   filter(category: string) {

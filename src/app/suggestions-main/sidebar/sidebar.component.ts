@@ -36,7 +36,6 @@ export class SidebarComponent implements OnInit {
   }
 
   filter(category: string): void {
-    console.log(category);
     this.filterEvent.emit(category);
   }
 

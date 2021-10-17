@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LoaderService } from 'src/app/feedback-api/loader.service';
 
 @Component({
   selector: 'app-go-back',
@@ -19,7 +20,7 @@ export class GoBackComponent implements OnInit {
   }
   @Output()
   goBackEvent = new EventEmitter<string>();
-  constructor() {}
+  constructor(private loader: LoaderService) {}
 
   ngOnInit(): void {}
 
