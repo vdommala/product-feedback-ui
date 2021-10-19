@@ -11,7 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { FeedbackApiModule } from './feedback-api/feedback-api.module';
 import { FeedbackDetailModule } from './feedback-detail/feedback-detail.module';
 import { RoadmapModule } from './roadmap/roadmap.module';
-import { CommentModule } from './comment/comment.module';
+import { DialogModule } from './dialog/dialog.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +27,7 @@ import { CommentModule } from './comment/comment.module';
     FeedbackDetailModule,
     RoadmapModule,
     AlertModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

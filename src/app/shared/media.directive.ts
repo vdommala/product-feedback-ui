@@ -14,7 +14,6 @@ export class MediaDirective {
   @Input()
   set appMedia(query: string) {
     if (this.removeListener) {
-      console.log(this.removeListener);
       this.removeListener();
     }
     const mql: MediaQueryList = window.matchMedia(query);

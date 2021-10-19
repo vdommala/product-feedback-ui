@@ -1,0 +1,60 @@
+:host {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal {
+  display: block;
+  width: 80%;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1em 0em;
+}
+@media all and (min-width: 768px) {
+  .modal {
+    width: 500px;
+  }
+}
+
+.modal-title {
+  border-bottom: 2px solid var(--tabs-btn-color);
+}
+.title {
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  color: var(--header-bg-color);
+}
+
+.message-title {
+  display: block;
+  width: 80%;
+  margin: 1em auto;
+  color: var(--text-primary-color);
+}
+.btn-grp {
+  display: flex;
+  flex-direction: row;
+}
+
+.push-left {
+  margin-left: auto;
+}
+
+.btn-ok {
+  background-color: var(--primary-color);
+  width: max-content;
+  margin-right: 2em;
+}
+
+.btn-cancel {
+  background-color: var(--header-bg-color);
+  width: max-content;
+  margin-right: 1em;
+}

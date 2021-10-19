@@ -14,13 +14,13 @@ import { UserService } from './feedback-api/user.service';
 export class AppComponent implements OnDestroy {
   title = 'product-feedback-app';
   destroySubject: Subject<void>;
-  isLoading = true;
+  isLoading = false;
   constructor(
     private userService: UserService,
     private feedbackService: FeedbackSubjectService,
     private loaderService: LoaderService
   ) {
-    this.destroySubject = new Subject();
+    this.destroySubject = new Subject<void>();
     this.loaderService
       .getLoading()
       .pipe(takeUntil(this.destroySubject))

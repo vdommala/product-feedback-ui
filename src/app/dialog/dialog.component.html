@@ -1,0 +1,24 @@
+<div class="modal">
+  <div class="modal-title">
+    <h3 class="title">Confirm</h3>
+  </div>
+  <div class="message-title">
+    <p class="text-3">{{ message }}</p>
+  </div>
+
+  <div class="btn-grp">
+    <button
+      class="custom-button text-3-bold btn-cancel push-left"
+      (click)="closed.next(false)"
+    >
+      Cancel
+    </button>
+
+    <button
+      class="custom-button text-3-bold btn-ok"
+      (click)="closed.next(true)"
+    >
+      Ok
+    </button>
+  </div>
+</div>

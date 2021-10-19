@@ -12,7 +12,6 @@ import { RequestService } from './request.service';
 import { UserService } from './user.service';
 import { CanDeactivateGuard } from './can-deactivate.guard';
 import { FeedbackSubjectService } from './feedback-subject.service';
-import { DialogService } from './dialog.service';
 import { CommentsService } from './comments.service';
 import { RepliesService } from './replies.service';
 import { LoaderService } from './loader.service';
@@ -41,7 +40,6 @@ export class FeedbackApiModule {
         RepliesService,
         CanDeactivateGuard,
         FeedbackSubjectService,
-        DialogService,
         LoaderService,
       ],
     };

@@ -19,9 +19,9 @@ import { takeUntil } from 'rxjs/operators';
 import { Category } from 'src/app/data-model/category-model';
 import { FeedbackRequest } from 'src/app/data-model/feedback-model';
 import { Status } from 'src/app/data-model/status-model';
+import { DialogService } from 'src/app/dialog/dialog.service';
 import { CategoryService } from 'src/app/feedback-api/category.service';
 import { StatusServiceService } from 'src/app/feedback-api/status-service.service';
-import { DialogService } from '../../feedback-api/dialog.service';
 
 @Component({
   selector: 'app-feedback-request-form',
@@ -177,9 +177,8 @@ export class FeedbackRequestFormComponent implements OnInit, OnDestroy {
 
   onDelete(): void {
     this.dialogService
-      .confirm('Are you sure you want to delete it permanently?')
-      .pipe(takeUntil(this.service$))
-      .subscribe((response) => {
+      .confirmAsPromise('Are you sure you want to delete it permanently?')
+      .then((response) => {
         if (response) this.deleteEvent.emit(this.feedbackRequest);
       });
   }
@@ -190,7 +189,6 @@ export class FeedbackRequestFormComponent implements OnInit, OnDestroy {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-    // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
     if (!this.feedbackForm.dirty) {
       return true;
     }
