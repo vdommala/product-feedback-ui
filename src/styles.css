@@ -273,7 +273,7 @@ h3 {
 }
 
 #sort-select .ng-option.ng-option-selected {
-  background-image: url("/assets/shared/icon-check.svg");
+  background-image: url("./assets/shared/icon-check.svg");
   background-repeat: no-repeat;
   background-position: 20ch;
   background-origin: content-box;

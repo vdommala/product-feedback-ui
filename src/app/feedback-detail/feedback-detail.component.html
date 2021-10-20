@@ -9,7 +9,11 @@
       Edit Feedback
     </button>
   </div>
-  <app-feedback fromPage="detail" [request]="request"></app-feedback>
+  <app-feedback
+    fromPage="detail"
+    [request]="request"
+    (incrementEvent)="updateUpvotes()"
+  ></app-feedback>
   <ng-container *ngIf="request?.comments">
     <app-comment
       [comments]="request.comments"

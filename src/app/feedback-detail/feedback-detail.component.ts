@@ -107,4 +107,18 @@ export class FeedbackDetailComponent implements OnInit, OnDestroy {
         }
       });
   }
+  updateUpvotes() {
+    let isDone = false;
+    this.userService
+      .onUpvoteChange()
+      .pipe(
+        takeWhile(() => !isDone),
+        switchMap((request) => this.requestService.updateUpvotes(request))
+      )
+      .subscribe((result) => {
+        if (result) {
+          isDone = true;
+        }
+      });
+  }
 }
