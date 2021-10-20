@@ -53,8 +53,24 @@
   margin-right: 2em;
 }
 
+.btn-ok:focus,
+.btn-ok:hover,
+.btn-ok:focus-within {
+  background-color: var(--primary-color-hover);
+  width: max-content;
+  margin-right: 2em;
+}
+
 .btn-cancel {
   background-color: var(--header-bg-color);
+  width: max-content;
+  margin-right: 1em;
+}
+
+.btn-cancel:hover,
+.btn-cancel:focus,
+.btn-cancel:focus-within {
+  background-color: var(--header-bg-hover-color);
   width: max-content;
   margin-right: 1em;
 }
