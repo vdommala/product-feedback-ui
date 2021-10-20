@@ -388,7 +388,7 @@ h3 {
 
 #category .ng-option.ng-option-selected,
 #status .ng-option.ng-option-selected {
-  background-image: url("/assets/shared/icon-check.svg");
+  background-image: url("./assets/shared/icon-check.svg");
   background-repeat: no-repeat;
   background-position: right;
   background-origin: content-box;
