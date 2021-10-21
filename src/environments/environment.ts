@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   title: 'Local',
-  apiHost: 'https://152.70.68.62:8443/api',
+  apiHost: 'https://feedback-services.herokuapp.com/api',
 };
 
 /*
